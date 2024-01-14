@@ -1,0 +1,10 @@
+{
+  "homepage": "",
+  "dependencies": {
+    "node.js": "^0.0.1-security"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NesrineYAH/les_petits_plats.git"
+  }
+}
