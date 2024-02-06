@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Les Petits Plats est un site offre des recettes de cuisine">
+    <link rel="icon" href="./assets/logo/icon.png" type="image/x-icon">
+    <link href="./output.css" rel="stylesheet">
+
+    <title>Les Petits Plats</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f266b52627.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/dist/output.css" rel="stylesheet">
+</head>
+
+<body class="mx-auto max-w-screen-2xl font-Manrope">
+    <header class="w-full h-[667px] bg-[url('./assets/images/header.jpg')] bg-no-repeat bg-center bg-cover">
+
+        <img class="w-52 pt-12 pl-12 m-0" src="./assets/logo/Logo.svg" alt="logo">
+        <div class="flex flex-col gap-y-48 relative">
+            <div class="flex flex-col gap-y-4 relative top-40">
+                <h3 class="text-primary font-anton text-center  text-4xl">CHERCHEZ PARMI PLUS DE 1500
+                    RECETTES</h3>
+                <h3 class="text-primary font-anton text-center  text-4xl">DU
+                    QUOTIDIEN,SIMPLES ET DÉLICIEUSES </h3>
+            </div>
+
+            <form class="w-9/12 h-[73px]  display: block relative mx-auto bg-white rounded-lg">
+                <input id="searche" type="search" placeholder="Rechercher une recette, un ingrédient, ..."
+                    class="w-4/5 h-full focus:outline-none ml-12 disabled:bg-white capitalize">
+                <button id="searcheBtn" class="absolute w-[52px] h-[52px] top-[10px] right-2  bg-black   rounded-lg "
+                    aria-label="searche" type="submit"><i class="fa-solid fa-magnifying-glass text-xl text-white  "></i>
+                </button>
+            </form>
+
+        </div>
+    </header>
+
+    <main class="w-full  bg-gray-200 pt-7" id="main">
+
+        <section class="w-11/12 mx-auto relative flex flex-row  justify-between " id="sectionFiltre"
+            aria-label="section pour filtre">
+            <div id="sectionOption" class="grid  gap-[89px] grid-cols-3">
+
+            </div>
+
+        </section>
+        <ul class="w-11/12 mx-auto relative flex flex-row  flex-wrap mt-[-38px]" id="tags"></ul>
+        <div id="cards" class="w-11/12  grid gap-14 grid-cols-3 mx-auto mt-9">
+
+
+        </div>
+
+
+    </main>
+    <script src="scripts/util/variables.js"></script>
+    <script src="scripts/api/api.js"></script>
+    <script src="scripts/templating/templating.js"></script>
+    <script src="scripts/util/manageElements.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/filter/filtre.js"></script>
+    <script src="scripts/btn/ingredients.js"></script>
+    <script src="scripts/btn/appareil.js"></script>
+    <script src="scripts/btn/ustensiles.js"></script>
+
+
+
+
+</body>
+
+</html>
