@@ -1,12 +1,18 @@
 {
-  "homepage": "",
+  "homepage": "https://github.com/NesrineYAH/les_petits_plats/",
   "dependencies": {
+    "cssnano": "^6.0.3",
     "eslint-plugin-tailwindcss": "^3.14.0",
     "node.js": "^0.0.1-security"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NesrineYAH/les_petits_plats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NesrineYAH/les_petits_plats/"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",

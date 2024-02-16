@@ -7,7 +7,7 @@ const AppareilFilterSection = createFilterSection(
   "Appareils",
   "left-[438px]",
   "AppareilSearch",
-  "searchApparei",
+  "searchAppareil",
   "list_Appareil"
 );
 pageObject.DisplaySection(AppareilFilterSection);
@@ -52,26 +52,28 @@ function closeBtnTagAppareil() {
     const tagValueToRemove = btnCloseTag.getAttribute(
       "data-tag-value-Appareils"
     );
-  
-console.log("Tag to remove:", tagValueToRemove);
-btnCloseTag.addEventListener("click", function () {
-  console.log("je entend le click");
-  console.log("Tag to remove:", tagValueToRemove);
-  tagElement.remove();
-  /**
-   * Retire la valeur du tag du tableau elementValues
-   */
-  elementValues = elementValues.filter((value) => value !== tagValueToRemove);
-  updateAppareilList();
-  /**
-  * Vérifie s'il ne reste plus aucun tag, puis affiche toutes les recettes
-  */
-if (elementValues.length === 0) {
-  searchWithTags([]);
-} else {
-  searchWithTags(elementValues);
-}
-updateNumberOfCards();
-});
-});
+
+    console.log("Tag to remove:", tagValueToRemove);
+    btnCloseTag.addEventListener("click", function () {
+      console.log("je entend le click");
+      console.log("Tag to remove:", tagValueToRemove);
+      tagElement.remove();
+      /**
+       * Retire la valeur du tag du tableau elementValues
+       */
+      elementValues = elementValues.filter(
+        (value) => value !== tagValueToRemove
+      );
+      updateAppareilList();
+      /**
+       * Vérifie s'il ne reste plus aucun tag, puis affiche toutes les recettes
+       */
+      if (elementValues.length === 0) {
+        searchWithTags([]);
+      } else {
+        searchWithTags(elementValues);
+      }
+      updateNumberOfCards();
+    });
+  });
 }
