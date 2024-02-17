@@ -39,6 +39,7 @@ function filterIngredients() {
   inputIngredients.setAttribute("id", "ingredients-input");
   inputIngredients.style.display = "none";
   inputIngredients.setAttribute("placeholder", "Sélectionner un ingrédient...");
+  //  inputIngredients.setAttribute("placeholder", "");
   inputIngredients.className = "filter__ingredients--input";
 
   const ingredientsListBox = document.createElement("ul");
@@ -46,4 +47,40 @@ function filterIngredients() {
   ingredientsListBox.style.display = "none";
 
   /** Ingredients Event **/
+  /*Créer un évenement lors du clique sur ArrowDowon*/
+
+  arrowDown.addEventListener("click", (e) => {
+    if (e.target.className === "fa-solid fa-angle-down fa-lg") {
+      article.classList.remove("filter__ingredients--close"); // event display we want to remove close
+      article.classList.add("filter__ingredients--view"); // event display we want to add view
+      headerIngredients.style.display = "none"; // when we open the arrow the headerIngredients will be Not displayed
+      inputIngredients.style.display = "flex"; // we add the style.css 'flex' in the inputIngredients
+      arrowDown.style.display = "none"; // arrowDown Not displayed
+      arrowUp.style.display = "flex";
+      template.style.width = "650px";
+      //    template.style.width = '170px';
+      ingredientsListBox.style.display = "flex";
+      inputIngredients.focus();
+
+      /* défini dans filters_input */
+      // eslint-disable-next-line no-undef
+      inputIngredient(); // this function is created in the filters_input.js file L 22
+
+      /* Défini dans tags.js */
+      // eslint-disable-next-line no-undef
+      addTagFilterIngredients(); //this function is created in the tags.js file L 22
+    }
+  });
+  /* Lors du clique sur ArrowUp */
+  arrowUp.addEventListener("click", (e) => {
+    if (e.target.className === "fa-solid fa-angle-up fa-lg")
+      article.classList.remove("filter__ingredients--view");
+    article.classList.add("filter__ingredients--close");
+    headerIngredients.style.display = "flex";
+    inputIngredients.style.display = "none";
+    arrowDown.style.display = "flex";
+    arrowUp.style.display = "none";
+    template.style.width = "170px";
+    ingredientsListBox.style.display = "none";
+  });
 }
