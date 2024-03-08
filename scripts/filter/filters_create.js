@@ -4,7 +4,6 @@
 
 /** filterIngredients is initiated on index.js **/
 // eslint-disable-next-line no-unused-vars
-
 function filterIngredients() {
   const ingredientsBox = document.getElementsByClassName("filter__ingredients");
   const template = document.createElement("div"); //on a créer une div template
@@ -73,14 +72,86 @@ function filterIngredients() {
   });
   /* Lors du clique sur ArrowUp */
   arrowUp.addEventListener("click", (e) => {
-    if (e.target.className === "fa-solid fa-angle-up fa-lg")
+    if (e.target.className === "fa-solid fa-angle-up fa-lg") {
       article.classList.remove("filter__ingredients--view");
-    article.classList.add("filter__ingredients--close");
-    headerIngredients.style.display = "flex";
-    inputIngredients.style.display = "none";
-    arrowDown.style.display = "flex";
-    arrowUp.style.display = "none";
-    template.style.width = "170px";
-    ingredientsListBox.style.display = "none";
+      article.classList.add("filter__ingredients--close");
+      headerIngredients.style.display = "flex";
+      inputIngredients.style.display = "none";
+      arrowDown.style.display = "flex";
+      arrowUp.style.display = "none";
+      template.style.width = "170px";
+      ingredientsListBox.style.display = "none";
+    }
+  });
+  /* Append Section */
+  ingredientsBox[0].appendChild(template);
+  template.appendChild(article);
+  article.appendChild(headerIngredients);
+  headerIngredients.appendChild(title);
+  headerIngredients.appendChild(spanAngle);
+  spanAngle.appendChild(arrowDown);
+  article.appendChild(hiddenAngle);
+  hiddenAngle.appendChild("arrowUp");
+  article.appendChild(inputIngredients);
+  article.appendChild(ingredientsBox);
+
+  return article;
+}
+
+/** Création filter appareil **/
+/*** function filterAppliances créer et fait apparaitre le filtre appareil. ***/
+/** filterAppliances() is initiated on index.js **/
+// eslint-disable-next-line no-unused-vars
+
+function filterAppliances() {
+  const appliancesBox = document.getElementByClassName("filter__appliances");
+  const template = document.createElement("div");
+  template.className = "filter__appliances--template";
+
+  const article = document.createElement("div"); //creation div
+  article.className = "filter__appliances--close";
+
+  const headerAppliances = document.createElement("header"); //creation header du div
+  headerAppliances.className = "filter__appliances--header";
+
+  const title = document.createElement("h2"); //creation titre h2 avec un chevero down fermé
+  title.textContent = "Appareil";
+  title.className = "filter__appliances--angleDown";
+
+  const spanAngle = document.createElement("span"); //creation span chevron down
+  spanAngle.className = "fa-solid fa-angle-down fa-lg";
+  arrowDown.style.cursor = "pointer";
+
+  const arrowDown = document.createElement("i"); //création i down parent span
+  arrowDown.className = "fa-solid fa-angle-down fa-lg";
+  arrowDown.style.cursor = "pointer";
+
+  const hiddenAngle = document.createElement("span"); //creation span chevron up
+  hiddenAngle.className = "filter__appliances--angleUp";
+
+  const arrowUp = document.createElement("i"); //création i up parent span
+  arrowUp.className = "fa-solid fa-angle-up fa-lg";
+  arrowUp.style.cursor = "pointer";
+  arrowUp.style.display = "none";
+
+  const inputAppliances = document.createElement("input");
+  inputAppliances.setAttribute("id", "appliances-input"); //a setAttribute()méthode définit une nouvelle valeur pour un attribut c'est dire c'est comme on écrit id="appliances-input"
+  inputAppliances.setAttribute("placeholder", "Sélectionner un ingrédient...");
+  //inputAppliances.setAttribute("placeholder", "");
+  inputAppliances.className = "filter__appliances--input";
+
+  const appliancesListBox = document.createElement("ul");
+  appliancesListBox.className = "filter__appliances--list";
+  appliancesListBox.style.display = "none";
+
+  /** Appliances Event **/
+  /* Lors du clique sur ArrowDown */
+  arrowDown.addEventListener("click", (e) => {
+    if (e.target.className === "fa-solid fa-angle-down fa-lg") {
+      article.classList.remove("filter__appliances--close"); //La classListpropriété renvoie les noms de classe CSS d'un élément.
+      article.classList.add("filter__appliances--view");
+    }
   });
 }
+
+/** Création filter Ustensil **/
