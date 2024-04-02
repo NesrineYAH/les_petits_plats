@@ -96,5 +96,17 @@ function searcheInbtn(ElementId, Element) {
 
 let elementVlaues = [];
 function initializeButtons(ElementTag, tag, closeTag, dataValue) {
-  const ElementList = document.querySelectorAll(ElementTag);
+  const ElementList = document.querySelectorAll(ElementTag); //on selectionne tous les tags
+  ElementList.forEach((button) => {
+    button.addEventListener("clcik", function () {
+      const valueBtn = button.textContent.trim(); //trim() removes whitespace from both sides of a string
+      elementVlaues.push(valueBtn);
+      console.log("Tags :", elementVlaues);
+
+      tagSection.insertAdjacentHTML(
+        "beforeEnd",
+        Tag(tag, closeTag, dataValue, valueBtn)
+      );
+    });
+  });
 }
