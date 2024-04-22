@@ -3,9 +3,9 @@
  */
 //fonction "createFilterSection" dans le file templating.js L 108
 const ingredientsFilterSection = createFilterSection(
-  "left-[19px]",
+  "left-[30px]",
   "Ingrédients",
-  "left-[150px]",
+  "left-[160px]",
   "ingredientSearch", //input du recherche
   "searchIngredient", //searchLoupe
   "list_ingredient" //ul contient toutes les li ingredients
@@ -49,9 +49,11 @@ function closeBtnTagIngredient() {
   pageObject.tagElements().forEach((tagElement) => {
     const btnCloseTag = tagElement.querySelector(".closeTagIngredients"); //fermer le boutton tag
     const tagValueToRemove = btnCloseTag.getAttribute("data-value-Ingredients"); //la valeur du tag a fermer ou supprimer
-    console.log("Tag to relove", tagValueToRemove); //TagSelected
+    console.log("Tag to remove", tagValueToRemove); //TagSelected
     // console.log("Tag to remove:", TagSelected); //TagSelected
-    btnCloseTag.addEventListner("click", function () {
+    btnCloseTag.addEventListener("click", function () {
+      console.log("je entend le click");
+      alert("tag fermé");
       console.log("Tag To remove", tagValueToRemove);
       tagElement.remove();
       /**
@@ -81,7 +83,6 @@ function updateIngredientsList() {
     const elementsInCadre = cadre.querySelectorAll(".ingredientElement");
     elements.push(...elementsInCadre);
   });
-
   const uniqueIngredients = new Set();
   elements.forEach((element) => {
     uniqueIngredients.add(element.textContent);

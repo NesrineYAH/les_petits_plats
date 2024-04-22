@@ -1,7 +1,7 @@
 /**
  * crée les cadres de recettes
  * @param {data}
- * @return {cadres ,cader count} //?????
+ * @return {cadre ,caderCount} //?????
  */
 
 function card(data) {
@@ -70,7 +70,7 @@ ${
   </div>
  
   <div class="flex flex-col py-7 w-4/5 mx-auto gap-4"> 
- <h1 class="font-anton text-lg font-normal titlesCadre">${name}</h1>
+ <h1 class="font-anton text-lg uppercase font-bold titlesCadre">${name}</h1>
  <p class="text-slate-400 font-bold	tracking-widest">RECETTE</p>
  <figcaption class="descriptionCadre">${truncatedDescription}</figcaption>
  <div class="">
@@ -81,12 +81,20 @@ ${
   </div>
 
   <p class="appareil  hidden" > ${appliance}  </p>
-  <ul class="Ustensiles hidden" > ${ustensilsElement} 
-   </ul>  
+  <ul class="Ustensiles hidden" > ${ustensilsElement}</ul>   
+ 
   </figure> 
   `;
 
   return cadre;
+}
+/**
+ * affiche le numbre de reccetes
+ */
+function rendreCardCount(nbCadre) {
+  return `
+    <p class="font-Anton  text-[21px] font-normal" id="cardsNumber"> ${nbCadre}  recettes</p>
+    `;
 }
 /**
  * crée la section des btn de filtre L 106
@@ -100,16 +108,16 @@ function createFilterSection(
   listId
 ) {
   return `
-  <div class="h-14 w-48 bg-white mb-16 cursor-pointer max-h-[324px] round-lg m-0">
-  <input aria-label="checkbox" type="checkbox" class = "h-20 w-60 peer inset-x-0
+  <div class="h-14 w-48 bg-white mb-16 cursor-pointer max-h-[324px]  m-0 rounded-md pt-[10px] ">
+  <input aria-label="checkbox" type="checkbox" class = "h-15 w-55 peer inset-x-0 left-[166px] top-[5px]
    opacity-0 z-10 cursor-pointer relative z-2 />
-  <h1 class="absolute top-[16px] ${left} text-base font-medium font-Manrope">${label}</h1>
-  <i class="fa-solid fa-chevron-down absolute top-[20px] ${leftIcon} 
+  <h1 class="absolute ${left} text-base font-medium font-Manrope">${label}</h1>
+  <i class="fa-solid fa-chevron-down absolute top-[16px] ${leftIcon} 
   transition-transform duration-500 rotate-0 peer-checked:rotate-180"></i>
 
   <div class="bg-white w-48  overflow-hidden transition-all duration-500 max-h-0 
    peer-checked:max-h-[315px] z-10 absolute top-[47px] rounded-lg pt-[12px]">
-   <form class="w-40 h-[37px] display:block relative border-solid border-2 border-gray-400 mx-auto">
+   <form class="w-40 h-[37px] display:block relative top-[16px] border-solid border-2 border-gray-400 mx-auto ">
    <input type="search" aria-label="input" id="${searchInputId}" 
   class="capitalize w-4/5 h-full focus:outline-none text-gray-400">
   <button id="${searchButtonId}" class="absolute top-[2px] right-2" aria-label="search" type="submit">
@@ -117,7 +125,7 @@ function createFilterSection(
    </button>
    </form>
 
-   <ul id="${listId}" class="pt-4 max-h-60 overflow-y-auto"></ul>
+   <ul id="${listId}" class="pt-4 max-h-100 h-[300px] overflow-y-auto"></ul>
    </div>
    </div>
 `;
@@ -127,16 +135,20 @@ function createFilterSection(
  */
 function ListItem(element, item) {
   return `
-  <li class= "capitalize ${element} text-sm font-Manrope font-normal hover:bg-yellow-500 mb-2 py-4 pl-[18px] ">
+  <li class= "capitalize ${element} text-sm font-Manrope font-normal hover:bg-yellow-500 mb-2 py-6 p-[20px] h-[10px]">
   <button class="ListIngredientsBtn "> ${item} </button>
-  </li>
-  `;
+  </li>`;
 }
+
+/**
+ * cree le tag
+ */
 function Tag(tag, closeTag, dataValue, valueBtn) {
-  return `<li class="${tag} text-sm font-Manrope font-normal bg-yellow-500 mb-2 py-4 text-transform: capitalize flex row px-4  rounded-md mr-10">
- <p class='pr-14'> ${valueBtn}</p>
- <button class="font-bold ${closeTag}" ${dataValue}="${valueBtn}"><i class="fa-solid fa-x"></i> </button>
- </li>`;
+  return `<li
+  class="${tag} text-sm font-Manrope font-normal bg-yellow-500 mb-2 py-4 text-transform: capitalize flex row px-4  rounded-md mr-10" >
+   <p class="pr-14">  ${valueBtn}  </p>
+   <button class="font-bold ${closeTag}" ${dataValue}="${valueBtn}"> <i class="fa-solid fa-x"></i> </button>
+  </li>`;
 }
 /**
  * Crée le message d'erreur lorsque aucune recette ne correspond à la recherche.

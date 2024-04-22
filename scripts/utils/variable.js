@@ -1,16 +1,16 @@
 const sectionOption = document.getElementById("sectionOption");
 const ingredientItems = document.querySelectorAll(".ListIngredientsBtn"); //ingredientsListBox
 const tagSection = document.getElementById("tags");
-const searchValue = document.getElementById("searche");
+
 const titlesCadre = document.querySelectorAll(".titlesCadre");
 const ingredientsCard = document.querySelectorAll(".ingredientsCard");
 const descriptionCadre = document.querySelectorAll(".descriptionCadre");
-const BtnSearche = document.getElementById("searcheBtn");
+
 const main = document.getElementById("main");
 const pageObject = {
   cadre: () => document.getElementById("cards"), //ensemble des cartes
   sectionFiltre: () => document.getElementById("sectionFiltre"),
-  sectionFiltreNumber: () => document.getElementById("cardesNumber"),
+  sectionFiltreNumber: () => document.getElementById("cardsNumber"),
   tagElements: () => document.querySelectorAll(".tagIngredients"),
 
   visibleCadres: () =>
@@ -28,5 +28,5 @@ const pageObject = {
   ingredientChoixUstensile: () => document.getElementById("list_Ustensiles"),
 
   DisplaySection: (Section) =>
-    sectionOption.insertAdjacentHTML("beforeend", Section),
+    sectionOption.insertAdjacentHTML("beforeEnd", Section),
 };

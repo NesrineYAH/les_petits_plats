@@ -23,7 +23,7 @@
 
         <img src="./assets/logo/logo.svg" alt="Logo" class="pt-12 pl-12 m-0 w-52 header__logo" />
         <div class="relative flex flex-col gap-y-4 top-40">
-            <h3 class="text-4xl font-bold text-center text-yellow-300 mt-50 font-anton">CHERCHEZ PARMI PLUS DE 1500
+            <h3 class="mt-10 text-4xl font-bold text-center text-yellow-300 font-anton">CHERCHEZ PARMI PLUS DE 1500
                 RECETTES</h3>
             <h3 class="text-4xl font-bold text-center text-yellow-300 font-anton">DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
             </h3>
@@ -32,46 +32,26 @@
         <form class="w-9/12 h-[73px]  display: block relative mx-auto bg-white rounded-lg">
             <input id="searche" type="search" placeholder="Rechercher une recette, un ingrédient, ..."
                 class="w-4/5 h-full ml-12 capitalize focus:outline-none disabled:bg-white">
+
             <button id="searcheBtn" class="absolute w-[52px] h-[52px] top-[10px] right-2  bg-black   rounded-lg "
                 aria-label="searche" type="submit"><i class="text-xl text-white fa-solid fa-magnifying-glass "></i>
             </button>
         </form>
-
     </header>
-    <main class="w-full bg-gray-200 main pt-7">
-        <section class="search">
 
-            <!-- <div class="search__input-group">
-                <input type="text" class="search__input"
-                    placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette..." />
-                <button class="search__button">
-                    <img src="./assets/image/loupe.svg" alt="Search" />
-                </button>
-            </div>  -->
+    <main class="w-full bg-gray-200 main pt-7" id="main">
 
-        </section>
-
-        <section id="sectionFiltre" class="relative flex flex-row justify-between w-11/12 h-[120px] mx-auto"
+        <section id="sectionFiltre" class="relative flex flex-row justify-between w-11/12 h-[120px] mx-auto mt-6"
             aria-label="section pour filtre">
-            <!--<section id="filters">-->
-            <div id="sectionOption" class="w-10/12 flex flex-row justify-between gap-[10px]">
-                <!--ajouté le 15/03 pour les 3 bouttons-->
-                <!--  <div class=" filter__ingredients"></div>
-                <div class="filter__appliances"></div>
-                <div class=" filter__ustensils"></div>-->
+
+            <div id="sectionOption" class="w-6/12  flex flex-row justify-between gap-[10px]">
             </div>
-            <p id="cardesNumber" class="font-Anton text-[21px] font-normal">
-            <p id="cardesNumber" class="font-Anton text-[21px] font-normal">50 recettes</p>
-            </p>
+            <!-- <div id="cardsNumber" class="font-Anton text-[21px] font-normal"> -->
+
         </section>
 
-        <section id="tags__selected" class="w-11/12 mx-auto relative flex flex-row  flex-wrap mt-[-38px] h-[200px] ">
-            <!-- <ul class="w-11/12 mx-auto relative flex flex-row  flex-wrap mt-[-38px]" id="tags"></ul>-->
-            <!-- ARRAY OF TAGS EN JAVASCRIPT -->
-            <!-- <div class="tag__ingredients--wrapper"></div>
-            <div class="tag__appliances--wrapper"></div>
-            <div class="tag__ustensils--wrapper"></div> -->
-        </section>
+        <ul class="w-11/12 mx-auto relative flex flex-row  flex-wrap mt-[-38px]  mb-30 h-[50px]" id="tags"></ul>
+
 
         <!--cadre-->
         <section id="cards" class="grid w-11/12 grid-cols-3 mx-auto gap-14 mt-9"> <!-- recieps_cards -->
@@ -80,16 +60,15 @@
         <span class="no-result-message"></span>
     </main>
 
-
-
-
     <script src="scripts/utils/variable.js"></script>
     <script src="scripts/index.js"></script>
-    <script src="scripts/api/api.js"></script>
+    <script src="scripts/utils/manageElements.js"></script>
     <script src="scripts/filter/filter.js"></script>
     <script src="scripts/templating/templating.js"></script>
-    <script src="scripts/utils/ManageElements.js"></script>
+
     <script src="scripts/btn/ingredients.js"></script>
+    <script src="scripts/btn/appareils.js"></script>
+    <script src="scripts/btn/ustensiles.js"></script>
 </body>
 
 </html>

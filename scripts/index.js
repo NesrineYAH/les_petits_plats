@@ -1,33 +1,49 @@
-// code source Imen // c'est le fichier qui englobe les function
 /**
  * @param {data}
- * @return {recipe card}
+ * @returns {recipe card}
  */
 
 const originalCadres = [];
-const listOfGlobalRecipe = [];
+const listOfGlobalRecipe = []; //la liste totale des recettes
 let cadreCount = 0;
 processRecipes();
 
 /**
  * empêche le comportement par défaut du bouton lorsqu'il est cliqué
  */
+const BtnSearche = document.getElementById("searcheBtn");
 BtnSearche.addEventListener("click", (e) => {
   e.preventDefault();
 });
 
+async function fetchData() {
+  try {
+    const requete = await fetch("../public/recipes.json", {
+      method: "GET",
+    });
+    if (requete.ok) {
+      const data = await requete.json();
+      return data;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
 /*** Afficher les cards ***/
-
 async function processRecipes() {
-  const dataArray = await fetchData();
-  dataArray.forEach((data) => {
-    listOfGlobalRecipe.push(data);
-    const cadre = card(data);
-    cadreCount++;
-    pageObject.DisplayCard(cadre);
-    originalCadres.push(cadre);
-  });
-  numbreOfCard();
+  try {
+    const dataArray = await fetchData(); // s'il est défini et qu'il retourne une promesse contenant un tableau de données (dataArray).
+    dataArray.forEach((data) => {
+      listOfGlobalRecipe.push(data);
+      const cadre = card(data); //retourne un élément DOM (ou une chaîne HTML) représentant une carte à afficher.
+      cadreCount++;
+      pageObject.DisplayCard(cadre); //afficher la carte dans l'interface utilisateur.
+      originalCadres.push(cadre);
+    });
+    numbreOfCard(); //il effectue le traitement souhaité sur le nombre de cartes affichées.
+  } catch (e) {
+    console.error(e);
+  }
 }
 /**
  * affiche le nombre des recettes
@@ -42,14 +58,16 @@ function numbreOfCard() {
 function updateNumberOfCards() {
   const numberOfVisibleCadres = pageObject.visibleCadres().length;
 
-  pageObject.sectionFilterNumber().innerHTML = rendreCardCount(
+  pageObject.sectionFiltreNumber().innerHTML = rendreCardCount(
     numberOfVisibleCadres
   );
+  console.log("numberOfVisibleCadres", numberOfVisibleCadres);
 }
 /**
  * Écoute les clics sur l'élément input ?????????????
  */
-searchValue.addEventListner("input", SearchWithInput);
+const searchValue = document.getElementById("searche");
+searchValue.addEventListener("input", SearchWithInput);
 function SearchWithInput() {
   performSearch(elementValues);
 }
@@ -59,13 +77,12 @@ function SearchWithInput() {
 function performSearch(tagValues) {
   const tagValue = tagValues.map((value) => value.toLowerCase()); //afficher dans un autre tableau les noms du tags en miniscules
 
-  /*
-   * Supprime les balises HTML - valeurDeRecherche se sont les mots qu'on écrit dans l'input de bare de recherche
-   */
+  //Supprime les balises HTML - valeurDeRecherche se sont les mots qu'on écrit dans l'input de bare de recherche
+
   const valeurDeRecherche = searchValue.value
     .toLowerCase()
     .replace(/<|>/g, "!");
-  const existingNoMatchMessage = document.getElementBy("NoMatchview"); // on veut obtenir le p d'erreur de message
+  const existingNoMatchMessage = document.getElementById("NoMatchview"); // on veut obtenir le p d'erreur de message
 
   if (existingNoMatchMessage) {
     //vérifie si existingNoMatchMessage a été trouvé,
@@ -101,8 +118,6 @@ function performSearch(tagValues) {
  */
 /**
  *
- * @param {*} valeurDeRecherche
- * @param {*} matchCadres
  *  valeurDeRecherche.length > 2 : Vérifie si la longueur de la chaîne valeurDeRecherche est supérieure à 2.
     matchCadres.length === 0: Vérifie si la longueur du tableau matchCadres est égale à 0.
       main.insertAdjacentHTML("afterend", NoMatchCard(valeurDeRecherche));: Si les deux conditions sont remplies, cette ligne insère du code HTML après l'élément main. La fonction insertAdjacentHTML est utilisée pour cela. Elle prend deux arguments :

@@ -13,9 +13,9 @@ function waitForElements(
   return new Promise((resolve) => {
     const checkElements = () => {
       const visibleCadres = document.querySelectorAll(
-        ".cadre[style='display: block;']"
+        ".cadre[style='display : block']"
       );
-      const elements = [];
+      const elements = []; //listIngredients ou listappareils
 
       visibleCadres.forEach((cadre) => {
         const elementsInCadre = cadre.querySelectorAll(selector);
@@ -30,7 +30,7 @@ function waitForElements(
     };
     checkElements();
   }).then((elements) => {
-    const uniqueElements = new Set();
+    const uniqueElements = new Set(); // const uniqueElements = new Set(elements.map((element) => element.textContent.toLowerCase()));
     elements.forEach((element) => {
       uniqueElements.add(element.textContent.toLowerCase());
     });
@@ -51,21 +51,21 @@ function waitForElements(
 }
 
 /**
- * @param {input search }
- * @return {List des élementes }
+ *  @param {input search }
+ *  @return {List des élementes }
  */
 function searcheInbtn(ElementId, Element) {
-  const valueElement = document.getElementById(ElementId); //valueElement est l'input des 3 bouttons
+  const valueElement = document.getElementById(ElementId); //valueElement est l'input des 3 bouttons ex: sucre valueElement est sucre
   valueElement.addEventListener("input", function () {
     const valeur = valueElement.value.toLowerCase();
-    console.log("valueElement", valeur); //ajouté le 02/04
+
     /**
-     * Parcours les valueElements  pour trouver correspondances
+     * Parcours les valueElements  pour trouver correspondances //Item c'est le li
      */
     const valueElementList = document.querySelectorAll(Element);
     valueElementList.forEach((Item) => {
       const ElementName = Item.textContent.toLowerCase();
-      console.log("ElementName", ElementName); // le nom des ingredients et les appareils et ustensils
+      console.log("ElementName", ElementName); // le nom des ingredients et les appareils et ustensils ex saladier
 
       if (valeur.length === 0) {
         Item.style.display = "block";
@@ -90,10 +90,10 @@ function searcheInbtn(ElementId, Element) {
 
 let elementValues = [];
 function initializeButtons(ElementTag, tag, closeTag, dataValue) {
-  const ElementList = document.querySelectorAll(ElementTag);
+  const ElementList = document.querySelectorAll(ElementTag); //on selectionne tous les tags
   ElementList.forEach((button) => {
     button.addEventListener("click", function () {
-      const valueBtn = button.textContent.trim();
+      const valueBtn = button.textContent.trim(); //trim() removes whitespace from both sides of a string
       elementValues.push(valueBtn);
       console.log("Tags :", elementValues);
 
@@ -101,8 +101,8 @@ function initializeButtons(ElementTag, tag, closeTag, dataValue) {
         "beforeEnd",
         Tag(tag, closeTag, dataValue, valueBtn)
       );
-      closeBtnTagAppareil(valueBtn);
       closeBtnTagIngredient(valueBtn);
+      closeBtnTagAppareil(valueBtn);
       closeBtnTagUstensile(valueBtn);
       searchWithTags(elementValues);
 
@@ -111,7 +111,7 @@ function initializeButtons(ElementTag, tag, closeTag, dataValue) {
   });
 }
 /**
- * @param {tagValues} - Les balises à utiliser pour la recherche.
+ * @param  {tagValues}  - Les balises à utiliser pour la recherche.
  * active la recherche avec les tags
  */
 function searchWithTags(tagValues) {
