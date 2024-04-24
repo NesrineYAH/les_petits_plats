@@ -106,7 +106,7 @@ function updateAppareilList() {
       .ingredientChoixAppareils()
       .insertAdjacentHTML("beforeEnd", ListItem("Appareils", element)); //on ajoute l'element avant la fin de section Appareil
   });
-  console.log("uniqueIngredientElements", uniqueIngredientElements);
+  // console.log("uniqueIngredientElements", uniqueIngredientElements);
   /**
    * Initialise les boutons ou effectue toute autre action nécessaire
    */

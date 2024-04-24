@@ -143,7 +143,17 @@ function ListItem(element, item) {
 /**
  * cree le tag
  */
+let selectedTag = null;
+
 function Tag(tag, closeTag, dataValue, valueBtn) {
+  if (selectedTag && selectedTag !== tag) {
+    alert("Un seul tag peut être sélectionné à la fois.");
+  } else if (!selectedTag) {
+    selectedTag == tag;
+    alert("un seul unique tag à ajouter");
+  }
+  console.log("selectedTag", selectedTag);
+
   return `<li
   class="${tag} text-sm font-Manrope font-normal bg-yellow-500 mb-2 py-4 text-transform: capitalize flex row px-4  rounded-md mr-10" >
    <p class="pr-14">  ${valueBtn}  </p>

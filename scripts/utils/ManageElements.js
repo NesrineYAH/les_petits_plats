@@ -89,14 +89,17 @@ function searcheInbtn(ElementId, Element) {
  */
 
 let elementValues = [];
+
 function initializeButtons(ElementTag, tag, closeTag, dataValue) {
   const ElementList = document.querySelectorAll(ElementTag);
+
   ElementList.forEach((button) => {
     button.addEventListener("click", function () {
       const valueBtn = button.textContent.trim();
       elementValues.push(valueBtn);
-      console.log("Tags :", elementValues);
+      //console.log("Tags :", elementValues);
 
+      // Ajouter le nouveau tag  --ajouté le 22/04
       tagSection.insertAdjacentHTML(
         "beforeEnd",
         Tag(tag, closeTag, dataValue, valueBtn)

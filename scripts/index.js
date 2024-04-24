@@ -74,11 +74,11 @@ function SearchWithInput() {
 /**
  * aplique le filtrage d'input et tags
  */
+
 function performSearch(tagValues) {
   const tagValue = tagValues.map((value) => value.toLowerCase()); //afficher dans un autre tableau les noms du tags en miniscules
 
   //Supprime les balises HTML - valeurDeRecherche se sont les mots qu'on écrit dans l'input de bare de recherche
-
   const valeurDeRecherche = searchValue.value
     .toLowerCase()
     .replace(/<|>/g, "!");
@@ -107,7 +107,6 @@ function performSearch(tagValues) {
    */
   //NoMatchCardes L148 of templating.js
   NoMatchCardes(valeurDeRecherche, matchCadres);
-
   updateNumberOfCards(); //index.js L40
   updateIngredientsList(); //ingredients.js L77
   updateAppareilList();

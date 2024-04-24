@@ -54,7 +54,7 @@ function closeBtnTagIngredient() {
     btnCloseTag.addEventListener("click", function () {
       console.log("je entend le click");
       alert("tag fermé");
-      console.log("Tag To remove", tagValueToRemove);
+      // console.log("Tag To remove", tagValueToRemove);
       tagElement.remove();
       /**
        * Retire la valeur du tag du tableau elementValues
@@ -65,9 +65,9 @@ function closeBtnTagIngredient() {
       );
       updateIngredientsList();
       if (elementValues.length === 0) {
-        serachWithTags([]);
+        searchWithTags([]);
       } else {
-        serachWithTags(elementValues);
+        searchWithTags(elementValues);
       }
       updateNumberOfCards(); // mettre à jours le nombre de carte après chaque recherche
     });

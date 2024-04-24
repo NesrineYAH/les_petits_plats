@@ -55,7 +55,7 @@ function filtre(
         (ustensils &&
           ustensils?.some((ustensil) => ustensil.toLowerCase().includes(tag)))
     );
-    console.log("allTagsInRecipe :", allTagsInRecipe);
+    //console.log("allTagsInRecipe :", allTagsInRecipe);
     if (valeurDeRecherche.length > 2) {
       /**
        * *si ya pas tag
